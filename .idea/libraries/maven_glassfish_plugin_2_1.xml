@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="maven-glassfish-plugin-2.1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../JAZ PLIKI/maven-glassfish-plugin-2.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

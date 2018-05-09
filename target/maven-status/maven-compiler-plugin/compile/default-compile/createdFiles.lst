@@ -1,0 +1,7 @@
+domain/MovieResources.class
+domain/HelloWorld.class
+domain/Actor.class
+domain/Movie.class
+domain/Comment.class
+services/MovieService.class
+domain/MyApplication.class
