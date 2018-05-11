@@ -9,10 +9,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-@Path("/moviess")
+@Path("/movies")
 public class MovieResources {
 
-    private MovieService db = new MovieService();
+    private MovieService dbService = new MovieService();
 
 
     // The Java method will process HTTP GET requests
@@ -22,7 +22,8 @@ public class MovieResources {
 
     public List<Movie> getAll()
     {
-        return db.getAll();
+
+        return dbService.getAll();
 
     }
 
@@ -30,16 +31,16 @@ public class MovieResources {
     @Consumes (MediaType.APPLICATION_JSON)
     public Response Add (Movie movie){
 
-        db.add(movie);
+        dbService.add(movie);
         return Response.ok(movie.getId()).build();
     }
 
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response get (@PathParam("id") int id){
+    public Response getMovieById (@PathParam("id") int id){
 
-    Movie result = db.get(id);
+    Movie result = dbService.get(id);
     if (result == null){
         return Response.status(404).build();
     }
@@ -49,14 +50,17 @@ public class MovieResources {
     @PUT
     @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
+
     public Response update (@PathParam("id") int id, Movie m) {
 
-        Movie result = db.get(id);
-        if (result == null)
+        Movie result = dbService.get(id);
+        if (result == null) {
             return Response.status(404).build();
+        }
         m.setId(id);
-        db.update(result);
+        dbService.update(m);
         return Response.ok().build();
+
 
     }
 
@@ -65,12 +69,97 @@ public class MovieResources {
 
     public Response delete (@PathParam("id") int id) {
 
-        Movie result = db.get(id);
+        Movie result = dbService.get(id);
         if (result == null)
             return Response.status(404).build();
-        db.update(result);
+
+        dbService.delete(result);
         return Response.ok().build();
 
+    }
+    // Wyswietlenie komentarzy filmu
+
+    @GET
+    @Path("/{movieId}/comments")
+    @Consumes(MediaType.APPLICATION_JSON)
+
+    public List<Comment> getComments(@PathParam("movieId") int movieId ){
+
+        Movie result = dbService.get(movieId);
+        if (result == null)
+            return null;
+
+        if (result.getComments() == null)
+            result.setComments(new ArrayList<Comment>());
+
+        return result.getComments();
+    }
+
+    // Dodawanie komentarzy do filmu
+
+    @POST
+    @Path("/{id}/comments")
+    @Consumes(MediaType.APPLICATION_JSON)
+
+    public Response addComment(@PathParam("id") int movieId, Comment comment ) {
+
+        Movie result = dbService.get(movieId);
+        if (result == null)
+            return Response.status(404).build();
+
+
+        if (result.getComments() == null) {
+            result.setComments(new ArrayList<>());
+        }
+
+        int commentId = result.getComments().size();
+        comment.setId(commentId);
+
+        result.getComments().add(comment);
+        dbService.update(result);
+        return Response.ok().build();
+    }
+// Wyswietlenie oceny filmu
+
+    @GET
+    @Path("/{movieId}/rate")
+    @Consumes(MediaType.APPLICATION_JSON)
+
+    public double getRate(@PathParam("movieId") int movieId ){
+
+        Movie result = dbService.get(movieId);
+        if (result == null)
+            return 0;
+
+        if (result.getRates() == null)
+            result.setRates(new ArrayList<Rate>());
+
+        return result.getRate();
+    }
+//Dodanie oceny filmu
+
+
+    @POST
+    @Path("/{id}/rate")
+    @Consumes(MediaType.APPLICATION_JSON)
+
+    public Response addRate(@PathParam("id") int movieId, Rate rate ) {
+
+        Movie result = dbService.get(movieId);
+        if (result == null)
+            return Response.status(404).build();
+
+
+        if (result.getRates() == null) {
+            result.setRates(new ArrayList<>());
+        }
+
+        int rateId = result.getRates().size();
+
+
+        result.getRates().add(rate);
+        dbService.update(result);
+        return Response.ok().build();
     }
 
 
@@ -81,7 +170,7 @@ public class MovieResources {
 
     public List<Actor> getActors(@PathParam("movieId") int movieId ){
 
-        Movie result = db.get(movieId);
+        Movie result = dbService.get(movieId);
         if (result == null)
             return null;
 
@@ -98,9 +187,9 @@ public class MovieResources {
     @Path("/{id}/actors")
     @Consumes(MediaType.APPLICATION_JSON)
 
-    public Response addActor(@PathParam("id") int movieId, Actor actor ){
+    public Response addActor(@PathParam("id") int movieId, Actor actor){
 
-        Movie result = db.get(movieId);
+        Movie result = dbService.get(movieId);
         if (result == null)
             return Response.status(404).build();
 
@@ -110,10 +199,7 @@ public class MovieResources {
         result.getActors().add(actor);
         return Response.ok().build();
 
-    // Dodanie filmow do aktora
 
-
-        // Wyswietlenie filmow danego aktora
 
 
     }

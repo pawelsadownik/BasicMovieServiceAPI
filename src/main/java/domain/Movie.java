@@ -9,6 +9,24 @@ public class Movie {
 
 
     private String name;
+    private int id;
+
+    private String comment;
+    private int rate;
+
+    private List <Actor> actors;
+    private List <Comment> comments;
+    private List <Rate> rates;
+
+    public List<Rate> getRates() {
+
+        return rates;
+    }
+
+    public void setRates(List<Rate> rates) {
+        this.rates = rates;
+    }
+
     public String getName() {
         return name;
     }
@@ -16,14 +34,6 @@ public class Movie {
     public void setName(String name) {
         this.name = name;
     }
-    private int id;
-
-    private String aboutMovie;
-    private String comment;
-    private int rate;
-    private int rating;
-    private List <Actor> actors;
-    private List <Comment> comments;
 
     public int getId() {
         return id;
@@ -31,16 +41,6 @@ public class Movie {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-
-
-    public String getAboutMovie() {
-        return aboutMovie;
-    }
-
-    public void setAboutMovie(String aboutMovie) {
-        this.aboutMovie = aboutMovie;
     }
 
     public String getComment() {
@@ -52,6 +52,11 @@ public class Movie {
     }
 
     public int getRate() {
+
+
+        //return rates.stream().mapToInt(a -> a).average().orElse(0);
+
+
         return rate;
     }
 
@@ -59,13 +64,7 @@ public class Movie {
         this.rate = rate;
     }
 
-    public int getRating() {
-        return rating;
-    }
 
-    public void setRating(int rating) {
-        this.rating = rating;
-    }
 
     public List<Actor> getActors() {
         return actors;

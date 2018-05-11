@@ -1,7 +1,9 @@
-/home/pawel/Dokumenty/Nauka/Informatyka/Zad4/src/main/java/domain/MovieResources.java
-/home/pawel/Dokumenty/Nauka/Informatyka/Zad4/src/main/java/domain/Movie.java
-/home/pawel/Dokumenty/Nauka/Informatyka/Zad4/src/main/java/domain/Actor.java
-/home/pawel/Dokumenty/Nauka/Informatyka/Zad4/src/main/java/domain/MyApplication.java
-/home/pawel/Dokumenty/Nauka/Informatyka/Zad4/src/main/java/domain/HelloWorld.java
-/home/pawel/Dokumenty/Nauka/Informatyka/Zad4/src/main/java/services/MovieService.java
-/home/pawel/Dokumenty/Nauka/Informatyka/Zad4/src/main/java/domain/Comment.java
+/Users/pawelsadownik/IdeaProjects/Zad4/src/main/java/domain/Comment.java
+/Users/pawelsadownik/IdeaProjects/Zad4/src/main/java/domain/Movie.java
+/Users/pawelsadownik/IdeaProjects/Zad4/src/main/java/services/MovieService.java
+/Users/pawelsadownik/IdeaProjects/Zad4/src/main/java/domain/Actor.java
+/Users/pawelsadownik/IdeaProjects/Zad4/src/main/java/services/ActorService.java
+/Users/pawelsadownik/IdeaProjects/Zad4/src/main/java/domain/ActorResources.java
+/Users/pawelsadownik/IdeaProjects/Zad4/src/main/java/domain/Rate.java
+/Users/pawelsadownik/IdeaProjects/Zad4/src/main/java/domain/MovieResources.java
+/Users/pawelsadownik/IdeaProjects/Zad4/src/main/java/domain/MyApplication.java

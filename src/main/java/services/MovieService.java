@@ -8,7 +8,7 @@ import domain.Movie;
 public class MovieService {
     private static List<Movie> db =  new ArrayList<Movie>();
 
-    private static int currentId = 1;
+    private static int currentId = 0;
 
     public List<Movie> getAll() {
 
@@ -34,9 +34,10 @@ public class MovieService {
 
         for (Movie m: db){
 
-            if(m.getId()==movie.getId()){
-                m.setAboutMovie(m.getAboutMovie());
-                m.setRate(m.getRate());
+            if (m.getId() == movie.getId()){
+
+
+                m.setName(movie.getName());
             }
         }
     }

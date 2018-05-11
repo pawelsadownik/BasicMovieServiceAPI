@@ -13,8 +13,9 @@ public class MyApplication extends Application{
     @Override
     public Set<Class<?>> getClasses() {
         HashSet h = new HashSet<Class<?>>();
-        h.add( HelloWorld.class );
+
         h.add( MovieResources.class );
+        h.add(ActorResources.class);
         return h;
     }
 }

@@ -1,7 +1,9 @@
+domain/Rate.class
+domain/ActorResources.class
 domain/MovieResources.class
-domain/HelloWorld.class
 domain/Actor.class
+services/ActorService.class
 domain/Movie.class
 domain/Comment.class
-services/MovieService.class
 domain/MyApplication.class
+services/MovieService.class
